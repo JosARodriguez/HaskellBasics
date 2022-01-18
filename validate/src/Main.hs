@@ -1,6 +1,11 @@
 module Main where
 import Data.Char (isSpace)
-
+-- Here we introduce the <$> operator
+-- for its implementation try out ":t (<$>)" in your terminal. 
+-- As you can see its very similar to what we saw earlier with "fmap"
+-- this operator will be particularly convenient for dealing with our new
+-- data types when dealing with inputs from users.
+m
 main :: IO ()
 main = do
   putStrLn "Please enter your username"
@@ -9,9 +14,19 @@ main = do
   pass <- Password <$> getLine
   print (makeUser usernm pass)
 
-
+-- We define the new types that will help us have code with much better readability.
 newtype Password = 
   Password String deriving (Eq, Show)
+
+-- The expression above is a type declaration, note that the word "Password"
+-- appears twice. First it represents the name of the new type and then the 
+-- name for the type constructor. Type ":t Password" in ghci, what does the
+-- output mean?
+--
+-- It's not necessary for the type and constructor to have the same name
+-- but it will be much easier to remember, if you find it confusing another common way to do this is "newtype Password = myPassword String ...to have the same name
+-- but it will be much easier to remember, if you find it confusing another common way to do this is "newtype Password = myPassword String ...""
+
 
 newtype Error =
   Error String deriving (Eq, Show)
