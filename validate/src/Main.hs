@@ -5,7 +5,6 @@ import Data.Char (isSpace)
 -- As you can see its very similar to what we saw earlier with "fmap"
 -- this operator will be particularly convenient for dealing with our new
 -- data types when dealing with inputs from users.
-m
 main :: IO ()
 main = do
   putStrLn "Please enter your username"
@@ -63,7 +62,7 @@ validateUsername :: Username -> Either Error Username
 validateUsername (Username username) = 
   checkSpaces username >>= usernameLength
 
-makeUser :: Username Password -> Either Error User
+makeUser :: Username -> Password -> Either Error User
 makeUser name pass = 
   User <$> validateUsername name
-  <*> validatePassword
+  <*> validatePassword password
